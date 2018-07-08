@@ -1,0 +1,1 @@
+java -Xmx32m -Xss256k -jar recon-project-0.0.1-SNAPSHOT.jar
