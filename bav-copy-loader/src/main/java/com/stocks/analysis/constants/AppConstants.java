@@ -69,7 +69,7 @@ public class AppConstants {
 	
 	//start folder names
 	
-	public static final String LOCAL_FOLDER = "sftp-inbound";
+	public static final String LOCAL_FOLDER = "/tmp/inbound";
 	
 	//end folder names
 	

@@ -37,8 +37,8 @@ if __name__ == '__main__':
     nse = Nse()
     count = 0
     lastRunDate = getLastRunDate()
-    while (count <= 1000):
-        time.sleep(60)
+    while (count <= 3000):
+        time.sleep(20)
         if count == 0:
             nse.download_bhavcopy(lastRunDate)
             print('lastRunDate is', lastRunDate)
