@@ -3,7 +3,9 @@ package com.stocks.analysis.utils;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.function.Function;
 
 import com.stocks.analysis.constants.AppConstants;
@@ -116,7 +118,16 @@ public class AppUtil {
 			String targetChannel = AppConstants.NULL_CHANNEL;
 			log.debug("Input file name is {}", s);
 		if (s.getName().startsWith(AppConstants.BAV_PREFIX)) {
-			targetChannel = AppConstants.BAV_CHANNEL;
+			Date asOnDate = getAsOnDate(s.getName());
+			Calendar calendar = new GregorianCalendar();
+			calendar.setTime(asOnDate);
+			log.info("year ===> {}0", calendar.get(Calendar.YEAR));
+			if (calendar.get(Calendar.YEAR) <= 2011) {
+				targetChannel = AppConstants.OLD_BAV_CHANNEL;
+			} else {
+				targetChannel = AppConstants.BAV_CHANNEL;
+			}
+			
 		}
 		log.info("Target channel is {}", targetChannel); 
 		return targetChannel;

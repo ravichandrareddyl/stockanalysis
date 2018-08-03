@@ -5,6 +5,9 @@ public class AppConstants {
 	//start: input columns
 	public static final String[] BAV_COLUMNS = {"symbol", "series", "open", "high", "low", "close", "last", "prevClose", "totTrdQty", "totTrdVal", "asOnDate", "totalTrades", "IsIn", "dummy"};
 	
+
+	public static final String[] OLD_BAV_COLUMNS = {"symbol", "series", "open", "high", "low", "close", "last", "prevClose", "totTrdQty", "totTrdVal", "asOnDate", "dummy"};
+	
 	//end: input columns
 	
 	//start app related strings
@@ -20,6 +23,8 @@ public class AppConstants {
 	
 	//start: channel types
 	public static final String BAV_CHANNEL = "bavChannel";
+
+	public static final String OLD_BAV_CHANNEL = "oldBavChannel";
 	
 	public static final String NULL_CHANNEL = "nullChannel";
 	
@@ -89,6 +94,11 @@ public class AppConstants {
 				+ "CAST(:open as money),CAST(:high as money),CAST(:low as money),CAST(:close as money),"
 				+ "CAST(:last as money),CAST(:prevClose as money), CAST(:totTrdQty as integer), CAST(:totTrdVal as money), TO_TIMESTAMP(:asOnDate, 'DD-MON-YYYY'),CAST(:totalTrades as integer), :isIn)";
 	
+	public static final String OLD_BAV_WRITER_SQL = "INSERT INTO BAV_DATA (SYMBOL,SERIES,OPEN,HIGH,LOW,"
+				+ "CLOSE,LAST,PREVCLOSE,TOTTRDQTY,TOTTRDVAL,AS_ON_DATE, TOTALTRADES) VALUES (:symbol,:series, "
+				+ "CAST(:open as money),CAST(:high as money),CAST(:low as money),CAST(:close as money),"
+				+ "CAST(:last as money),CAST(:prevClose as money), CAST(:totTrdQty as integer), CAST(:totTrdVal as money), TO_TIMESTAMP(:asOnDate, 'DD-MON-YYYY'), 0)";
+				
 	
 	//end app queries
 }

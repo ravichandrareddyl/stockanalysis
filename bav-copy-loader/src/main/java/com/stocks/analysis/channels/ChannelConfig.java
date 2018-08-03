@@ -15,6 +15,11 @@ public class ChannelConfig {
     }
 
     @Bean
+    public MessageChannel oldBavChannel() {
+        return MessageChannels.direct().get();
+    }
+
+    @Bean
     public MessageChannel jobListenerChannel() {
         return MessageChannels.queue(5).get();
     }

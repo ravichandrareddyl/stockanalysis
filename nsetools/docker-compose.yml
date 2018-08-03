@@ -1,0 +1,25 @@
+version: '2'
+networks: 
+  mynet:
+    driver: bridge
+services:
+  db:
+   image: postgres
+   restart: always
+   ports:
+    - 5432:5432
+   volumes:
+    - ${PGDATA}:/var/lib/postgresql/data
+   environment:
+    - POSTGRES_PASSWORD=${PG_PASSWORD}
+    - POSTGRES_USER=${PG_USER}
+    - TZ=Asia/Kolkata
+   networks:
+    - mynet
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+    - mynet

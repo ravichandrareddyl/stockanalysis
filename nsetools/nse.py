@@ -307,7 +307,7 @@ class Nse(AbstractBaseExchange):
         else:
             zip_file_handle = io.BytesIO(response.read())
             zf = zipfile.ZipFile(zip_file_handle)
-            zf.extract(filename, '/home/ravi/VS_WS/stock-analysis/bav-copy-loader/sftp-inbound/')    
+            zf.extract(filename, '/home/ravi/bavfiles/')    
 
 
     def download_index_copy(self, d):

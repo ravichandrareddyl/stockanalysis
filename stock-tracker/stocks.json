@@ -1,0 +1,10 @@
+{
+  "stocks": [
+    {
+      "stock": "INDIGO",
+      "operation": "BUY",
+      "price":1000,
+      "cronExpression": "0/10 * * * * ?"
+    }
+  ]
+}

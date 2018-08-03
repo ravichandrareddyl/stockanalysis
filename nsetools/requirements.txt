@@ -1,2 +1,4 @@
 sphinxcontrib-googleanalytics==0.1
 sphinxcontrib-newsfeed==0.1.4
+python-dateutil==2.7.3
+psycopg2=2.7.5

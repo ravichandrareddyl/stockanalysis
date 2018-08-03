@@ -3,6 +3,9 @@ package com.stocks.analysis.config;
 import java.io.File;
 import java.util.Arrays;
 
+import com.stocks.analysis.constants.AppConstants;
+import com.stocks.analysis.utils.AppUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
@@ -11,7 +14,6 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.integration.launch.JobLaunchingGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.config.EnableIntegration;
@@ -28,9 +30,6 @@ import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
 import org.springframework.util.Assert;
 
-import com.stocks.analysis.constants.AppConstants;
-import com.stocks.analysis.utils.AppUtil;
-
 @Configuration
 @EnableIntegration
 public class FileIntegration {
@@ -40,6 +39,10 @@ public class FileIntegration {
     @Autowired
     @Qualifier("bavJob")
     private Job bavJob;
+
+    @Autowired
+    @Qualifier("oldBavJob")
+    private Job oldBavJob;
     
     @Autowired
     private JobLauncher jobLauncher;
@@ -69,6 +72,16 @@ public class FileIntegration {
     public IntegrationFlow routerFlow() {
         return IntegrationFlows.from(AppConstants.ROUTING_CHANNEL)
                 .<File, String>route(AppUtil.determineChannels())
+                .get();
+    }
+
+    @Bean
+    public IntegrationFlow oldBavFlow() {
+        return IntegrationFlows.from(AppConstants.OLD_BAV_CHANNEL)
+                .transform(fileMessageToJobLaunchRequest(this.oldBavJob))
+                .handle(jobLaunchingGateway())
+                .channel(AppConstants.JOB_LISTENER_CHANNEL)
+                .handle(handler())
                 .get();
     }
 
