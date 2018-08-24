@@ -1,52 +1,60 @@
-// package com.ravi.service;
+package com.ravi.service;
 
-// import java.util.ArrayList;
-// import java.util.List;
-// import java.util.Map;
+import java.util.List;
 
-// import com.ravi.constants.AppQueries;
-// import com.ravi.mappers.ANCLSMapper;
-// import com.ravi.model.ANCLSModel;
-// import com.ravi.model.ResponseModel;
+import javax.sql.DataSource;
 
-// import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.beans.factory.annotation.Qualifier;
-// import org.springframework.cache.annotation.Cacheable;
-// import org.springframework.context.annotation.Profile;
-// import org.springframework.jdbc.core.JdbcTemplate;
-// import org.springframework.stereotype.Repository;
+import com.ravi.constants.AppConstants;
+import com.ravi.mappers.StockHistRowMapper;
+import com.ravi.mappers.StockRowMapper;
+import com.ravi.model.Stock;
+import com.ravi.model.StockHistory;
 
-// @Repository
-// @Profile("simple-cache")
-// public class DBRepo {
-//     private final Logger log = LoggerFactory.getLogger(getClass());
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-//     @Autowired
-//     private ANCLSMapper anclsMapper;
+@Repository
+@Profile("simple-cache")
+public class DBRepo {
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
-//     @Autowired 
-//     @Qualifier("jdbcMap")
-//     private Map<String, JdbcTemplate> jdbcMap; 
+    private JdbcTemplate jdbcTemplate;
 
-//     @Cacheable(cacheNames = "dbStats", key = "{#country}")
-//     public ResponseModel getdetails(String country) {
-//         List<ANCLSModel> results = new ArrayList<ANCLSModel>();
-//         ResponseModel response = new ResponseModel();
-//         response.setCountry(country);
-//         try {
-//             JdbcTemplate template = jdbcMap.get(country);
-//             results = template.query(AppQueries.anclsQry, anclsMapper);
-//             response.setStatus("success");
-//         } catch (Exception e) {
-//             e.printStackTrace();
-//             log.error("Error while executing the query" + e.getMessage());
-//             response.setStatus("error");
-//         }
-//         response.setList(results);
+    @Autowired
+    public void setDataSource(@Qualifier("dsStk") DataSource stkDB) {
+        this.jdbcTemplate = new JdbcTemplate(stkDB);
+    }
+    
+    public List<Stock> getStocksToBeTracked() {
+        List<Stock> stocks = null;
+
+        stocks = this.jdbcTemplate.query(AppConstants.GET_STOCKS_FOR_TRACKING, new StockRowMapper());
         
-//         return response; 
-//     }
+        return stocks;
+    }
 
-// }
+    public List<StockHistory> getStockHistory(int stockId) {
+        List<StockHistory> hist = null;
+
+        hist = this.jdbcTemplate.query(AppConstants.GET_STOCK_HISTORY_BY_ID, new Object[] { stockId }, new StockHistRowMapper());
+        
+        return hist;
+    }
+
+    public int updateTrackingStatus() {
+        return this.jdbcTemplate.update(AppConstants.UPDATE_TRACKING_MARKER);
+    }
+
+    public int stopTracking(Stock stock) {
+        return this.jdbcTemplate.update(AppConstants.UPDATE_TRACKING_COMPLETE, new Object[] {AppConstants.COMPLETED, stock.getStockId()});
+    }
+
+    public int addHistory(StockHistory hist) {
+        return this.jdbcTemplate.update(AppConstants.INSERT_STOCK_HIST, new Object[] {hist.getStockId(), hist.getMarketPrice(), hist.getSquareOff(), hist.getSellOff(), hist.getStatus()});
+    }
+}

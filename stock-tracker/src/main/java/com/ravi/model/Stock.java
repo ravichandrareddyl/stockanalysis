@@ -1,11 +1,17 @@
 package com.ravi.model;
 
+import java.math.BigDecimal;
+
 public class Stock {
 	
 	private String stock;
+	private int stockId;
 	private String  operation;
-	private float price;
-	private String cronExpression;
+	private BigDecimal price;
+	private String trackingStatus;
+	private String alertStatus;
+	private double percent;
+
 	/**
 	 * @return the stock
 	 */
@@ -13,28 +19,64 @@ public class Stock {
 		return stock;
 	}
 	/**
-	 * @return the cronExpression
-	 */
-	public String getCronExpression() {
-		return cronExpression;
-	}
-	/**
-	 * @param cronExpression the cronExpression to set
-	 */
-	public void setCronExpression(String cronExpression) {
-		this.cronExpression = cronExpression;
-	}
-	/**
 	 * @return the price
 	 */
-	public float getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(float price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+	/**
+	 * @return the percent
+	 */
+	public double getPercent() {
+		return percent;
+	}
+	/**
+	 * @param percent the percent to set
+	 */
+	public void setPercent(double percent) {
+		this.percent = percent;
+	}
+	/**
+	 * @return the alertStatus
+	 */
+	public String getAlertStatus() {
+		return alertStatus;
+	}
+	/**
+	 * @param alertStatus the alertStatus to set
+	 */
+	public void setAlertStatus(String alertStatus) {
+		this.alertStatus = alertStatus;
+	}
+	/**
+	 * @return the trackingStatus
+	 */
+	public String getTrackingStatus() {
+		return trackingStatus;
+	}
+	/**
+	 * @param trackingStatus the trackingStatus to set
+	 */
+	public void setTrackingStatus(String trackingStatus) {
+		this.trackingStatus = trackingStatus;
+	}
+	/**
+	 * @return the stockId
+	 */
+	public int getStockId() {
+		return stockId;
+	}
+	/**
+	 * @param stockId the stockId to set
+	 */
+	public void setStockId(int stockId) {
+		this.stockId = stockId;
 	}
 	/**
 	 * @return the operation
@@ -54,8 +96,4 @@ public class Stock {
 	public void setStock(String stock) {
 		this.stock = stock;
 	}
-
-	
-
-
 }

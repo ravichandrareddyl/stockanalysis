@@ -8,19 +8,27 @@ import java.util.List;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ravi.constants.AppConstants;
 import com.ravi.jobs.JobRunner;
 import com.ravi.model.JobScheduleModel;
 import com.ravi.model.Stock;
 import com.ravi.model.StocksModel;
+import com.ravi.service.DBRepo;
+import com.ravi.util.AppUtil;
 
 import org.quartz.JobBuilder;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
+import org.quartz.JobKey;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -28,25 +36,23 @@ public class JobSchedulerModelGenerator {
 
     Logger logger = LoggerFactory.getLogger(JobSchedulerModelGenerator.class);
 
+    @Autowired
+    private DBRepo dao;
+    
+    @Autowired
+    private SchedulerFactoryBean schedulerFactoryBean;
+
     @Value("${configFile}")
     private String configLocation;
 
-    public StocksModel getStockConfig() {
-        StocksModel stocks = null;
-        ObjectMapper mapper = new ObjectMapper(new JsonFactory());
-        try {
-            stocks = mapper.readValue(new File(configLocation), StocksModel.class);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return stocks;
+    public List<Stock> getStocksToBeTracked() {
+        return dao.getStocksToBeTracked();
     }
 
     public List<JobScheduleModel> generateModels() {
-        StocksModel stocks = this.getStockConfig();
+        List<Stock> stocks = this.getStocksToBeTracked();
         List<JobScheduleModel> generatedModels = new ArrayList<JobScheduleModel>();
-        for (Stock stock: stocks.getStocks()) {
+        for (Stock stock: stocks) {
             JobScheduleModel model = generateModelFrom(stock);
             generatedModels.add(model);
         }
@@ -55,8 +61,10 @@ public class JobSchedulerModelGenerator {
 
     private JobScheduleModel generateModelFrom(Stock stock) {
         JobDetail jobDetail = getJobDetailFor(stock);
- 
-        Trigger trigger = getTriggerFor(stock.getCronExpression(), jobDetail);
+        
+        String cronExpression = AppUtil.getCronExpression();
+        logger.info("STOCK:{} and cron Expression: {}", stock.getStock(), cronExpression);
+        Trigger trigger = getTriggerFor(cronExpression, jobDetail);
         JobScheduleModel jobScheduleModel = new JobScheduleModel(jobDetail, trigger);
         return jobScheduleModel;
     }
@@ -64,11 +72,24 @@ public class JobSchedulerModelGenerator {
     private JobDetail getJobDetailFor(Stock stock) {
         JobDetail jobDetail = JobBuilder.newJob(JobRunner.class)
                 .setJobData(getJobDataMapFrom(stock))
-                .withDescription("Job with report name : " + stock.getStock() +
-                        " and CRON expression : " + stock.getCronExpression())
-                .withIdentity(stock.getStock(), "STOCKS")
+                .withDescription("Job with report name : " + stock.getStock())
+                .withIdentity(stock.getStock(), AppConstants.JOB_GROUP_NAME)
                 .build();
         return jobDetail;
+    }
+
+    public void deleteJob(Stock stock) {
+        Scheduler scheduler = schedulerFactoryBean.getScheduler();
+        try {
+			scheduler.deleteJob(new JobKey(stock.getStock(), AppConstants.JOB_GROUP_NAME));
+            this.stopTracking(stock);
+        } catch (SchedulerException e) {
+			logger.error("Failed to delete job with error: {}", e.getMessage());
+		}
+    }
+
+    private void stopTracking(Stock stock) {
+        dao.stopTracking(stock);
     }
 
     public String getStockConfigAsString(Stock stock) {
@@ -86,7 +107,7 @@ public class JobSchedulerModelGenerator {
 
     private JobDataMap getJobDataMapFrom(Stock stock) {
         JobDataMap jobDataMap = new JobDataMap();
-        jobDataMap.put("report", getStockConfigAsString(stock));
+        jobDataMap.put("stock", getStockConfigAsString(stock));
         return jobDataMap;
     }
  

@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableCaching
 public class Application {
 
-	
 	// @Autowired
 	// private JobParser jobParser;
 	

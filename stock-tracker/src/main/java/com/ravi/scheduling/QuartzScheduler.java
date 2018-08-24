@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import com.ravi.model.JobScheduleModel;
+import com.ravi.service.DBRepo;
 
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
@@ -18,6 +19,9 @@ import org.springframework.stereotype.Component;
 public class QuartzScheduler {
 
     Logger logger = LoggerFactory.getLogger(QuartzScheduler.class);
+
+    @Autowired
+    private DBRepo dao;
 
     @Autowired
     private SchedulerFactoryBean schedulerFactoryBean;
@@ -44,6 +48,7 @@ public class QuartzScheduler {
         }
         try {
             scheduler.start();
+            dao.updateTrackingStatus();
         } catch (SchedulerException e) {
             logger.error("Failed to schedule jobs because of error {}", e.getMessage());
         }

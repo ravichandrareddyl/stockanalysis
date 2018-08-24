@@ -23,14 +23,14 @@ public class JobRunner implements Job {
     private Stock stock;
 
     @Autowired
-    private ProcessorService reportService;
+    private ProcessorService stockService;
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        reportService.process(this.stock);
+        stockService.process(this.stock);
     }
  
-    public void setReport(String stockJson) {
+    public void setStock(String stockJson) {
         ObjectMapper mapper = new ObjectMapper(new JsonFactory());
         try {
             this.stock = mapper.readValue(stockJson, Stock.class);
