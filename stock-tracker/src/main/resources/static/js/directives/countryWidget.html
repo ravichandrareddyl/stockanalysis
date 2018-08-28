@@ -1,0 +1,17 @@
+<div class="col s12 m4">
+    <div class="card-panel">
+        <span class="country-heading blue-text text-darken-3 left-align">{{country.country}}</span>
+        <img src="img/blank.gif" class="right flag flag-{{country.country | lowercase}}" alt="Czech Republic" />
+        <br>
+        <div ng-if="country.status == 'success'">
+            <br>
+            <h6>Current Step: {{country.currentStep}} - {{steps[country.currentStep]}}</h6>
+            <br>
+            <alert-widget ng-if="shouldDisplayChecks == true" alerts="country.list"></alert-widget>
+        </div>
+        <div ng-if="country.status == 'error'">
+            <br>
+            <h6> <i class="material-icons circle">sync_problem</i> Database unreachable </h6>
+        </div>
+    </div>
+</div>

@@ -11,12 +11,25 @@ public class Stock {
 	private String trackingStatus;
 	private String alertStatus;
 	private double percent;
+	private BigDecimal currentPrice;
 
 	/**
 	 * @return the stock
 	 */
 	public String getStock() {
 		return stock;
+	}
+	/**
+	 * @return the currentPrice
+	 */
+	public BigDecimal getCurrentPrice() {
+		return currentPrice;
+	}
+	/**
+	 * @param currentPrice the currentPrice to set
+	 */
+	public void setCurrentPrice(BigDecimal currentPrice) {
+		this.currentPrice = currentPrice;
 	}
 	/**
 	 * @return the price

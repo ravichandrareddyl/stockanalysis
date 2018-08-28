@@ -2,7 +2,6 @@ package com.ravi.scheduling;
 
 import static org.quartz.CronScheduleBuilder.cronSchedule;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import com.ravi.constants.AppConstants;
 import com.ravi.jobs.JobRunner;
 import com.ravi.model.JobScheduleModel;
 import com.ravi.model.Stock;
-import com.ravi.model.StocksModel;
 import com.ravi.service.DBRepo;
 import com.ravi.util.AppUtil;
 
@@ -27,7 +25,6 @@ import org.quartz.TriggerBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
@@ -42,15 +39,17 @@ public class JobSchedulerModelGenerator {
     @Autowired
     private SchedulerFactoryBean schedulerFactoryBean;
 
-    @Value("${configFile}")
-    private String configLocation;
-
-    public List<Stock> getStocksToBeTracked() {
-        return dao.getStocksToBeTracked();
+    public List<JobScheduleModel> getStocksToBeTrackedAtStartup() {
+        List<Stock> stocks = dao.getStocksToBeTrackedAtStartup();
+        return this.generateModels(stocks);
     }
 
-    public List<JobScheduleModel> generateModels() {
-        List<Stock> stocks = this.getStocksToBeTracked();
+    public List<JobScheduleModel> getStocksToBeTrackedAtRunTime() {
+        List<Stock> stocks = dao.getStocksForTrackingAtRunTime();
+        return this.generateModels(stocks);
+    }
+
+    public List<JobScheduleModel> generateModels(List<Stock> stocks) {
         List<JobScheduleModel> generatedModels = new ArrayList<JobScheduleModel>();
         for (Stock stock: stocks) {
             JobScheduleModel model = generateModelFrom(stock);

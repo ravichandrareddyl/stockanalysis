@@ -1,0 +1,6 @@
+<ul class="collection">
+    <li ng-repeat="itm in alerts | filter:{type: 'check'}" class="collection-item">
+        <i class="material-icons white-text circle" ng-class="alertCheck(itm) ? 'green' : 'red'">check</i>
+        <span class="title check-desc">{{itm.desc}}</span>
+    </li>
+</ul>

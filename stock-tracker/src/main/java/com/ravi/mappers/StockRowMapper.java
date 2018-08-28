@@ -15,10 +15,12 @@ public class StockRowMapper implements RowMapper {
         Stock stock = new Stock();
         stock.setStock(rs.getString(AppConstants.STOCK));
         stock.setStockId(rs.getInt(AppConstants.ID));
+        stock.setOperation(rs.getString(AppConstants.OPERATION));
         stock.setPrice(rs.getBigDecimal(AppConstants.PRICE));
         stock.setTrackingStatus(rs.getString(AppConstants.TRACKING_STATUS));
         stock.setAlertStatus(rs.getString(AppConstants.ALERT_STATUS));
         stock.setPercent(rs.getDouble(AppConstants.PERCENT));
+        stock.setCurrentPrice(rs.getBigDecimal(AppConstants.CURRENT_PRICE));
 		return stock;
 	}
 

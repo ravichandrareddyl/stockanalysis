@@ -1,0 +1,6 @@
+<h5>{{country.name}}</h5>
+<ul class="stepper linear">
+    <li ng-repeat="single in steps" class="step" ng-class="{'active': 1 == country.currentStep}">
+        <div class="step-title waves-effect">{{single.name}}</div>
+    </li>
+</ul>

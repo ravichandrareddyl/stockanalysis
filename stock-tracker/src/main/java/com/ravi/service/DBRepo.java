@@ -29,21 +29,21 @@ public class DBRepo {
     public void setDataSource(@Qualifier("dsStk") DataSource stkDB) {
         this.jdbcTemplate = new JdbcTemplate(stkDB);
     }
-    
-    public List<Stock> getStocksToBeTracked() {
-        List<Stock> stocks = null;
 
-        stocks = this.jdbcTemplate.query(AppConstants.GET_STOCKS_FOR_TRACKING, new StockRowMapper());
-        
-        return stocks;
+    public List<Stock> getAllStocks() {
+        return this.jdbcTemplate.query(AppConstants.GET_ALL_STOCKS, new StockRowMapper());
+    }
+    
+    public List<Stock> getStocksToBeTrackedAtStartup() {
+        return this.jdbcTemplate.query(AppConstants.GET_STOCKS_FOR_TRACKING, new StockRowMapper());
     }
 
     public List<StockHistory> getStockHistory(int stockId) {
-        List<StockHistory> hist = null;
+        return this.jdbcTemplate.query(AppConstants.GET_STOCK_HISTORY_BY_ID, new Object[] { stockId }, new StockHistRowMapper());
+    }
 
-        hist = this.jdbcTemplate.query(AppConstants.GET_STOCK_HISTORY_BY_ID, new Object[] { stockId }, new StockHistRowMapper());
-        
-        return hist;
+    public List<Stock> getStocksForTrackingAtRunTime() {
+        return this.jdbcTemplate.query(AppConstants.GET_STOCKS_FOR_TRACKING_NEW, new StockRowMapper());
     }
 
     public int updateTrackingStatus() {

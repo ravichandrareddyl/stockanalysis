@@ -35,7 +35,7 @@ public class DBConfig {
     public DataSource dsStk() {
 
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl(String.format("jdbc:mysql://%s/%s", host, schema));
+        config.setJdbcUrl(String.format("jdbc:mysql://%s/%s?useSSL=false", host, schema));
         config.setUsername(userName);
         config.setPassword(password);
         config.addDataSourceProperty("cachePrepStmts", "true");

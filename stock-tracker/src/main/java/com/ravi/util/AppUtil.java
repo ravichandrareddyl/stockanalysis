@@ -30,7 +30,7 @@ public class AppUtil {
 
     public static String getCronExpression() {
         int rand = getRandomnNum();
-        return String.format("%d * * ? * * *", rand);
+        return String.format("%d * 9-15 ? * MON,TUE,WED,THU,FRI *", rand);
     }
 
     public static BigDecimal getSquareOffValue(BigDecimal in, double percent) {

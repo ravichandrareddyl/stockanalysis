@@ -1,25 +1,25 @@
-// package com.ravi.controller;
+package com.ravi.controller;
 
-// import com.ravi.model.ResponseModel;
-// import com.ravi.service.DBRepo;
+import java.util.List;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Controller;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.ResponseBody;
+import com.ravi.model.Stock;
+import com.ravi.service.DBRepo;
 
-// @Controller
-// public class DashboardController {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-// 	@Autowired
-// 	private DBRepo dbRepo;
+@Controller
+public class DashboardController {
 
-// 	@PostMapping("/getStatus/{country}")
-// 	@ResponseBody
-// 	public ResponseModel getStatus(@PathVariable String country) {
-// 		long start = System.currentTimeMillis();
-	
-// 		return dbRepo.getdetails(country);
-// 	}
-// }
+	@Autowired
+	private DBRepo dbRepo;
+
+	@PostMapping("/getStatus")
+	@ResponseBody
+	public List<Stock> getStatus() {
+		return dbRepo.getAllStocks();
+	}
+}
