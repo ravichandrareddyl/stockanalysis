@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: simple-cache
+  main:
+    banner-mode: 'off'
+  jpa:
+    hibernate:
+      connection:
+        provider_class: org.hibernate.hikaricp.internal.HikariCPConnectionProvider
+    properties:
+      hibernate:
+        show-sql: true
+        format_sql: true
+        use_sql: true
+        default_schema: stkdb
+        id:
+          new_generator_mappings: false
+        search:
+          autoregister_listeners: false
+        bytecode:
+          use_reflection_optimizer: false
+logging:
+  file: ~/logs
+  level: 
+    ROOT: ERROR
+    com.zaxxer.hikari.HikariConfig: ERROR
+    com.ravi: INFO
+    org.hibernate.SQL: DEBUG
+server:
+  port: 8083
+app:
+  jwtSecret: JWTSuperSecretKey
+  jwtExpirationInMs: 604800000  

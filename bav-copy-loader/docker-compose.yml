@@ -1,6 +1,6 @@
 version: '2'
 networks: 
-  mynet:
+  hisnet:
     driver: bridge
 services:
   db:
@@ -15,21 +15,21 @@ services:
     - POSTGRES_USER=${PG_USER}
     - TZ=Asia/Kolkata
    networks:
-    - mynet
+    - hisnet
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
     networks:
-    - mynet
+    - hisnet
   bav-loader:
     image: springio/bhav-copy-loader
     restart: always
     volumes:
       - ${BAV_FILE}:/tmp/inbound
     networks:
-      - mynet
+      - hisnet
     depends_on:
       - db
       - adminer

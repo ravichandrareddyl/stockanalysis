@@ -1,0 +1,25 @@
+version: '2'
+networks:
+  databasevcs_mynet:
+    external: true
+services:
+  stock-tracker:
+    image: stock-analysis/stock-tracker
+    restart: always
+    ports:
+    - 9001:8081
+    external_links:
+    - databasevcs_db_1:db
+    networks:
+    - databasevcs_mynet
+  stock-analysis-api:
+    image: stock-analysis/stock-tracker-api
+    restart: always
+    ports:
+    - 8083:8083
+    external_links:
+    - databasevcs_db_1:db
+    depends_on:
+    - stock-tracker
+    networks:
+    - databasevcs_mynet

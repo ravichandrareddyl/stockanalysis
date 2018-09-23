@@ -31,15 +31,14 @@ spring:
     useEquals: true
     suspectTimeout: 0
     alternateUsernameAllowed: false
-
 logging:
   file: ~/logs
   level: 
     ROOT: ERROR
     com.zaxxer.hikari.HikariConfig: ERROR
     com.ravi: INFO
+    org.hibernate.SQL: DEBUG
 server:
   port: 8081
-
 liquibase:
-  change-log: classpath:db/changelog/db.changelog-master.xml
+  change-log: classpath:/db/changelog/db.changelog-master.xml

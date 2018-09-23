@@ -15,9 +15,9 @@
       <maven.compiler.target>1.8</maven.compiler.target>
       <maven.compiler.source>1.8</maven.compiler.source>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		  <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		  <java.version>1.8</java.version>
-		  <docker.image.prefix>stock-analysis</docker.image.prefix>
+	  <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	  <java.version>1.8</java.version>
+	  <docker.image.prefix>stock-analysis</docker.image.prefix>
     </properties>
 
     <parent>
@@ -34,9 +34,11 @@
               <version>2.0.3.RELEASE</version>
           </dependency>
           <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-web</artifactId>
+          </dependency>
+        
+        <!-- end::security[] -->
           <dependency>
               <groupId>org.springframework.boot</groupId>
               <artifactId>spring-boot-starter-actuator</artifactId>
@@ -46,11 +48,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.7</version>
         </dependency>
-        <!-- <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency> -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -59,12 +56,11 @@
         <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-context-support</artifactId>
-		    </dependency>
+		</dependency>
         <dependency>
           <groupId>org.liquibase</groupId>
           <artifactId>liquibase-core</artifactId>
-		    </dependency>
-        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+		</dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -75,24 +71,16 @@
             <artifactId>httpclient</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- <dependency>
+        <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency> -->
-        <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-			<exclusions>
-                <exclusion>
-                    <groupId>org.apache.tomcat</groupId>
-                    <artifactId>tomcat-jdbc</artifactId>
-                </exclusion>
-            </exclusions>
-		</dependency>
-         <!-- <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency> -->
+          <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-jdbc</artifactId>
+                    </exclusion>
+                </exclusions>
+		    </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
         <dependency>
@@ -116,18 +104,17 @@
             <artifactId>HikariCP</artifactId>
             <version>3.2.0</version>
         </dependency>
-
     </dependencies>
 
     <build>
-  <resources>
-    <resource>
-      <directory>${project.basedir}/src/main/resources</directory>
-    </resource>
-    <resource>
-      <directory>${project.build.directory}/generated-resources</directory>
-    </resource>
-  </resources>
+    <resources>
+        <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
+        </resource>
+        <resource>
+        <directory>${project.build.directory}/generated-resources</directory>
+        </resource>
+    </resources>
   <plugins>
     <plugin>
       <groupId>org.springframework.boot</groupId>
@@ -152,76 +139,6 @@
                         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>
                 </configuration>
-    </plugin>
-    <plugin>
-      <artifactId>maven-resources-plugin</artifactId>
-      <executions>
-        <execution>
-          <!-- Serves *only* to filter the wro.xml so it can get an absolute 
-            path for the project -->
-          <id>copy-resources</id>
-          <phase>validate</phase>
-          <goals>
-            <goal>copy-resources</goal>
-          </goals>
-          <configuration>
-            <outputDirectory>${basedir}/target/wro</outputDirectory>
-            <resources>
-              <resource>
-                <directory>src/main/wro</directory>
-                <filtering>true</filtering>
-              </resource>
-            </resources>
-          </configuration>
-        </execution>
-      </executions>
-    </plugin>
-    <plugin>
-      <groupId>ro.isdc.wro4j</groupId>
-      <artifactId>wro4j-maven-plugin</artifactId>
-      <version>1.7.6</version>
-      <executions>
-        <execution>
-          <phase>generate-resources</phase>
-          <goals>
-            <goal>run</goal>
-          </goals>
-        </execution>
-      </executions>
-      <configuration>
-        <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
-        <cssDestinationFolder>${project.build.directory}/generated-resources/static/css</cssDestinationFolder>
-        <jsDestinationFolder>${project.build.directory}/generated-resources/static/js</jsDestinationFolder>
-        <wroFile>${project.build.directory}/wro/wro.xml</wroFile>
-        <extraConfigFile>${basedir}/src/main/wro/wro.properties</extraConfigFile>
-        <contextFolder>${basedir}/src/main/wro</contextFolder>
-      </configuration>
-      <dependencies>
-        <dependency>
-          <groupId>org.webjars</groupId>
-          <artifactId>jquery</artifactId>
-          <version>3.1.1</version>
-        </dependency>
-        <dependency>
-          <groupId>org.webjars</groupId>
-          <artifactId>angularjs</artifactId>
-          <version>1.6.6</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.webjars/materializecss -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>materializecss</artifactId>
-            <version>0.100.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.webjars.bower/angular-materialize -->
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>angular-materialize</artifactId>
-            <version>0.2.2</version>
-        </dependency>
-
-
-      </dependencies>
     </plugin>
   </plugins>
 </build>
