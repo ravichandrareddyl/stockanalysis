@@ -38,6 +38,7 @@ class StockList extends React.Component {
                 operation: stock.opertion,
                 history: getHistory(stock.history),
                 alertStatus: stock.alertStatus,
+                trackingStatus: stock.trackingStatus,
                 price: stock.price
             };
         }): [];
