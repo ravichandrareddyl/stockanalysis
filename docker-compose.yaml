@@ -12,6 +12,8 @@ services:
     - databasevcs_db_1:db
     networks:
     - databasevcs_mynet
+    environment:
+    - TZ=Asia/Kolkata
   stock-analysis-api:
     image: stock-analysis/stock-tracker-api
     restart: always
@@ -23,3 +25,5 @@ services:
     - stock-tracker
     networks:
     - databasevcs_mynet
+    environment:
+    - TZ=Asia/Kolkata
