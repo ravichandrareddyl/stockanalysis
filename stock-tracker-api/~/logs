@@ -1,0 +1,673 @@
+2018-09-27 21:51:46.663  INFO 24966 --- [main] com.ravi.Application                     : Starting Application on ravi-Aspire-E1-571 with PID 24966 (/home/ravi/VS_WS/stock-analysis/stock-tracker-api/target/classes started by ravi in /home/ravi/VS_WS/stock-analysis/stock-tracker-api)
+2018-09-27 21:51:46.678  INFO 24966 --- [main] com.ravi.Application                     : The following profiles are active: simple-cache
+2018-09-27 21:52:03.686 ERROR 24966 --- [main] o.apache.catalina.core.StandardService   : Failed to start connector [Connector[HTTP/1.1-8083]]
+
+org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-8083]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:256) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:198) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:300) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:162) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:553) [spring-context-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1255) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1243) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at com.ravi.Application.main(Application.java:20) [classes/:na]
+Caused by: org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1020) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	... 13 common frames omitted
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0_171]
+	at sun.nio.ch.Net.bind(Net.java:433) ~[na:1.8.0_171]
+	at sun.nio.ch.Net.bind(Net.java:425) ~[na:1.8.0_171]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223) ~[na:1.8.0_171]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[na:1.8.0_171]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1150) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:591) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1018) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	... 14 common frames omitted
+
+2018-09-27 21:52:03.748 ERROR 24966 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8083 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8083, or configure this application to listen on another port.
+
+2018-09-27 21:54:27.526  INFO 26084 --- [main] com.ravi.Application                     : Starting Application on ravi-Aspire-E1-571 with PID 26084 (/home/ravi/VS_WS/stock-analysis/stock-tracker-api/target/classes started by ravi in /home/ravi/VS_WS/stock-analysis/stock-tracker-api)
+2018-09-27 21:54:27.532  INFO 26084 --- [main] com.ravi.Application                     : The following profiles are active: simple-cache
+2018-09-27 21:54:39.732 ERROR 26084 --- [main] o.apache.catalina.core.StandardService   : Failed to start connector [Connector[HTTP/1.1-8083]]
+
+org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-8083]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:256) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:198) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:300) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:162) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:553) [spring-context-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1255) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1243) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at com.ravi.Application.main(Application.java:20) [classes/:na]
+Caused by: org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1020) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	... 13 common frames omitted
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0_171]
+	at sun.nio.ch.Net.bind(Net.java:433) ~[na:1.8.0_171]
+	at sun.nio.ch.Net.bind(Net.java:425) ~[na:1.8.0_171]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223) ~[na:1.8.0_171]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[na:1.8.0_171]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1150) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:591) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1018) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	... 14 common frames omitted
+
+2018-09-27 21:54:39.767 ERROR 26084 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8083 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8083, or configure this application to listen on another port.
+
+2018-09-27 21:55:27.014  INFO 26562 --- [main] com.ravi.Application                     : Starting Application on ravi-Aspire-E1-571 with PID 26562 (/home/ravi/VS_WS/stock-analysis/stock-tracker-api/target/classes started by ravi in /home/ravi/VS_WS/stock-analysis/stock-tracker-api)
+2018-09-27 21:55:27.022  INFO 26562 --- [main] com.ravi.Application                     : The following profiles are active: simple-cache
+2018-09-27 21:55:38.824  INFO 26562 --- [main] com.ravi.Application                     : Started Application in 12.566 seconds (JVM running for 13.137)
+2018-09-27 21:57:36.742 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        user0_.id as id1_4_0_,
+        user0_.created_at as created_2_4_0_,
+        user0_.updated_at as updated_3_4_0_,
+        user0_.email as email4_4_0_,
+        user0_.name as name5_4_0_,
+        user0_.password as password6_4_0_,
+        user0_.username as username7_4_0_ 
+    from
+        users user0_ 
+    where
+        user0_.id=?
+2018-09-27 21:57:37.091 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        roles0_.user_id as user_id1_3_0_,
+        roles0_.role_id as role_id2_3_0_,
+        role1_.id as id1_0_1_,
+        role1_.name as name2_0_1_ 
+    from
+        user_roles roles0_ 
+    inner join
+        roles role1_ 
+            on roles0_.role_id=role1_.id 
+    where
+        roles0_.user_id=?
+2018-09-27 21:57:37.300 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        stock0_.id as id1_1_,
+        stock0_.alert_status as alert_st2_1_,
+        stock0_.name as name3_1_,
+        stock0_.opertion as opertion4_1_,
+        stock0_.percent as percent5_1_,
+        stock0_.price as price6_1_,
+        stock0_.tracking_status as tracking7_1_ 
+    from
+        STOCKS_MASTER stock0_
+2018-09-27 21:57:37.400 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:57:37.406 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:57:37.412 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:57:37.415 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:57:37.419 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:57:37.422 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:57:37.429 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:57:37.435 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:57:37.440 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:57:37.447 DEBUG 26562 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:58:17.341  INFO 28301 --- [main] com.ravi.Application                     : Starting Application on ravi-Aspire-E1-571 with PID 28301 (/home/ravi/VS_WS/stock-analysis/stock-tracker-api/target/classes started by ravi in /home/ravi/VS_WS/stock-analysis/stock-tracker-api)
+2018-09-27 21:58:17.347  INFO 28301 --- [main] com.ravi.Application                     : The following profiles are active: simple-cache
+2018-09-27 21:58:30.226  INFO 28301 --- [main] com.ravi.Application                     : Started Application in 13.631 seconds (JVM running for 14.22)
+2018-09-27 21:59:13.061 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        user0_.id as id1_4_0_,
+        user0_.created_at as created_2_4_0_,
+        user0_.updated_at as updated_3_4_0_,
+        user0_.email as email4_4_0_,
+        user0_.name as name5_4_0_,
+        user0_.password as password6_4_0_,
+        user0_.username as username7_4_0_ 
+    from
+        users user0_ 
+    where
+        user0_.id=?
+2018-09-27 21:59:13.151 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        roles0_.user_id as user_id1_3_0_,
+        roles0_.role_id as role_id2_3_0_,
+        role1_.id as id1_0_1_,
+        role1_.name as name2_0_1_ 
+    from
+        user_roles roles0_ 
+    inner join
+        roles role1_ 
+            on roles0_.role_id=role1_.id 
+    where
+        roles0_.user_id=?
+2018-09-27 21:59:13.239 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        stock0_.id as id1_1_,
+        stock0_.alert_status as alert_st2_1_,
+        stock0_.name as name3_1_,
+        stock0_.opertion as opertion4_1_,
+        stock0_.percent as percent5_1_,
+        stock0_.price as price6_1_,
+        stock0_.tracking_status as tracking7_1_ 
+    from
+        STOCKS_MASTER stock0_ 
+    left outer join
+        STOCKS_TRACKING_DETAIL stockhisto1_ 
+            on (
+                stock0_.id=stockhisto1_.stock_id
+            )
+2018-09-27 21:59:13.349 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:59:13.362 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:59:13.367 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:59:13.376 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:59:13.381 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:59:13.385 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:59:13.389 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:59:13.398 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:59:13.403 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:59:13.407 DEBUG 28301 --- [http-nio-8083-exec-1] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 21:59:39.345  INFO 28901 --- [main] com.ravi.Application                     : Starting Application on ravi-Aspire-E1-571 with PID 28901 (/home/ravi/VS_WS/stock-analysis/stock-tracker-api/target/classes started by ravi in /home/ravi/VS_WS/stock-analysis/stock-tracker-api)
+2018-09-27 21:59:39.350  INFO 28901 --- [main] com.ravi.Application                     : The following profiles are active: simple-cache
+2018-09-27 21:59:51.290  INFO 28901 --- [main] com.ravi.Application                     : Started Application in 12.703 seconds (JVM running for 13.231)
+2018-09-27 22:00:00.166 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        user0_.id as id1_4_0_,
+        user0_.created_at as created_2_4_0_,
+        user0_.updated_at as updated_3_4_0_,
+        user0_.email as email4_4_0_,
+        user0_.name as name5_4_0_,
+        user0_.password as password6_4_0_,
+        user0_.username as username7_4_0_ 
+    from
+        users user0_ 
+    where
+        user0_.id=?
+2018-09-27 22:00:00.259 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        roles0_.user_id as user_id1_3_0_,
+        roles0_.role_id as role_id2_3_0_,
+        role1_.id as id1_0_1_,
+        role1_.name as name2_0_1_ 
+    from
+        user_roles roles0_ 
+    inner join
+        roles role1_ 
+            on roles0_.role_id=role1_.id 
+    where
+        roles0_.user_id=?
+2018-09-27 22:00:00.369 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        stock0_.id as id1_1_,
+        stock0_.alert_status as alert_st2_1_,
+        stock0_.name as name3_1_,
+        stock0_.opertion as opertion4_1_,
+        stock0_.percent as percent5_1_,
+        stock0_.price as price6_1_,
+        stock0_.tracking_status as tracking7_1_ 
+    from
+        STOCKS_MASTER stock0_
+2018-09-27 22:00:00.487 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 22:00:00.497 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 22:00:00.502 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 22:00:00.506 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 22:00:00.514 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 22:00:00.518 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 22:00:00.528 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 22:00:00.533 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 22:00:00.540 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?
+2018-09-27 22:00:00.547 DEBUG 28901 --- [http-nio-8083-exec-2] org.hibernate.SQL                        : 
+    select
+        history0_.stock_id as stock_id6_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_0_,
+        history0_.STOCK_HIST_ID as STOCK_HI1_2_1_,
+        history0_.market_price as market_p2_2_1_,
+        history0_.sell_off as sell_off3_2_1_,
+        history0_.square_off as square_o4_2_1_,
+        history0_.status as status5_2_1_,
+        history0_.stock_Id as stock_Id6_2_1_,
+        history0_.stock_id as stock_id6_2_1_ 
+    from
+        STOCKS_TRACKING_DETAIL history0_ 
+    where
+        history0_.stock_id=?

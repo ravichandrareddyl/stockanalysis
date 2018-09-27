@@ -15,7 +15,8 @@ public interface StockRepository extends JpaRepository<Stock, Long> {
    // Optional<User> findByUsernameOrEmail(String username, String email);
 
     //@Query("SELECT v, h.marketPrice FROM Stock v, StockHistory h where v.id = h.stockId")
-    @Query("SELECT v FROM Stock v LEFT JOIN StockHistory h ON v.id = h.stockId ")
+    //@Query("SELECT v FROM Stock v LEFT JOIN StockHistory h ON v.id = h.stockId ")
+    @Query("SELECT v FROM Stock v")
     List<Stock> findAll();
 
     // Optional<User> findByUsername(String username);

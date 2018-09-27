@@ -39,7 +39,7 @@ public class AppUtil {
 
 
     public static BigDecimal getSellOffValue(BigDecimal in, double percent) {
-        return in.subtract((in.multiply(new BigDecimal((percent))).divide(new BigDecimal(100))));
+        return in.subtract((in.multiply(new BigDecimal((0.5))).divide(new BigDecimal(100))));
     }
 
     public static String valueFromKey(String json) {
