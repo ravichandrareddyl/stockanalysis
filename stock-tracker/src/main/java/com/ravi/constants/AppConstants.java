@@ -11,6 +11,7 @@ public interface AppConstants {
     public static final String JOB_CREATOR_GROUP = "ADMIN";
 
     public static final String SOLD = "SOLD";
+    public static final String BOUGHT = "BOUGHT";
     public static final String COMPLETED = "COMPLETED";
     //STOCK_MASTER table columns
     public static final String STOCK = "NAME";
@@ -58,5 +59,9 @@ public interface AppConstants {
     public static final String RUNTIME = "RUNTIME";
 
     public static final String RUN_TIME_EXECUTOR_CRON = "0 0/15 * ? * MON,TUE,WED,THU,FRI *";
+
+    public static final String OPR_SELL = "SELL";
+
+    public static final String OPR_BUY = "BUY";
 
 }

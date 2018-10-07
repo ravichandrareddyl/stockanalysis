@@ -34,9 +34,55 @@ public class ProcessorService {
         String quoteResponse = this.getQuote(stock);
         BigDecimal marketPrice = this.parseQuote(quoteResponse);
 
+        if(AppConstants.OPR_BUY.equalsIgnoreCase(stock.getOperation())) {
+            this.trackBuy(quoteResponse, marketPrice, stock);
+        } else if (AppConstants.OPR_SELL.equalsIgnoreCase(stock.getOperation())) {
+            this.trackSell(quoteResponse, marketPrice, stock);
+        }
+        return null;
+    }
+
+    private void trackSell(String quoteResponse, BigDecimal marketPrice, Stock stock) {
+        double percent = 0 != stock.getPercent() ? stock.getPercent(): 1.0;
+        BigDecimal  sellOff = AppUtil.getSquareOffValue(marketPrice, 0.5);
+        BigDecimal sqrOff = AppUtil.getSellOffValue(marketPrice, percent);
+
+        logger.info("Stock: {} and Price: {}, square off: {}, sell off : {}", stock.getStock(), marketPrice, sqrOff, sellOff);
+        List<StockHistory> previousHistory = dao.getStockHistory(stock.getStockId());
+        
+        if (previousHistory.size() > 0) {
+            //has history
+            StockHistory hist = previousHistory.get(0);
+            if (marketPrice.compareTo(hist.getMarketPrice()) == -1) {
+                logger.info("down trend continues");
+                this.addHistory(stock, marketPrice, sqrOff, sellOff, null);
+            } else {
+                if (marketPrice.compareTo(hist.getSellOff()) >= 0) {
+                    logger.info("market price greater than sell off price so BUYING it and deleting job");
+                    this.addHistory(stock, marketPrice, sqrOff, sellOff, AppConstants.BOUGHT);
+                    this.jobSchedulerModelGenerator.deleteJob(stock);
+                }
+                //
+            }
+        } else {
+            //no history
+            logger.info("stock price is : {}", stock.getPrice());
+            if (stock.getPrice().compareTo(sellOff) >= 0) {
+                logger.info("price greater than sell off so BUYING it it");
+                this.addHistory(stock, marketPrice, sqrOff, sellOff, AppConstants.BOUGHT);
+                this.jobSchedulerModelGenerator.deleteJob(stock);
+            } else {
+                logger.info("tracking the order as it is not greater than sell of price");
+                this.addHistory(stock, marketPrice, sqrOff, sellOff, null);
+            }
+
+        }
+    }
+
+    private void trackBuy(String quoteResponse, BigDecimal marketPrice, Stock stock) {
         double percent = 0 != stock.getPercent() ? stock.getPercent(): 1.0;
         BigDecimal sqrOff = AppUtil.getSquareOffValue(marketPrice, percent);
-        BigDecimal sellOff = AppUtil.getSellOffValue(marketPrice, percent);
+        BigDecimal sellOff = AppUtil.getSellOffValue(marketPrice, 0.5);
 
         logger.info("Stock: {} and Price: {}, square off: {}, sell off : {}", stock.getStock(), marketPrice, sqrOff, sellOff);
         List<StockHistory> previousHistory = dao.getStockHistory(stock.getStockId());
@@ -68,8 +114,6 @@ public class ProcessorService {
             }
 
         }
-        
-        return null;
     }
 
     private int addHistory(Stock stock, BigDecimal marketPrice, BigDecimal sqrOff, BigDecimal sellOff, String status) {

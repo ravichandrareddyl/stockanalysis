@@ -64,11 +64,12 @@ public class QuartzScheduler {
         
         
         try {
-            if (mode.equalsIgnoreCase(AppConstants.START_UP)) {
-                JobDetail runTimeExecutor = this.forkRunTimeExecutor();
-                Trigger trigger = this.getTriggerFor(runTimeExecutor);
-                scheduler.scheduleJob(runTimeExecutor, trigger);
-            }
+            // changed this flow to API invocation
+            // if (mode.equalsIgnoreCase(AppConstants.START_UP)) {
+            //     JobDetail runTimeExecutor = this.forkRunTimeExecutor();
+            //     Trigger trigger = this.getTriggerFor(runTimeExecutor);
+            //     scheduler.scheduleJob(runTimeExecutor, trigger);
+            // }
             scheduler.start();
             dao.updateTrackingStatus();
         } catch (SchedulerException e) {

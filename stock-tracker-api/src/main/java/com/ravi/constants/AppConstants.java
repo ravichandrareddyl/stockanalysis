@@ -59,4 +59,5 @@ public interface AppConstants {
 
     public static final String RUN_TIME_EXECUTOR_CRON = "0 0/15 * ? * MON,TUE,WED,THU,FRI *";
 
+    public static final String TRACKING_SERVICE_URL = "http://localhost:9001/trackOrder";
 }

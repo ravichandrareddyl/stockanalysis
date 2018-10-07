@@ -8,6 +8,7 @@ import com.ravi.domain.Stock;
 import com.ravi.payload.ApiResponse;
 import com.ravi.payload.StockRequest;
 import com.ravi.repository.StockRepository;
+import com.ravi.service.JobHandlerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,10 @@ public class DashboardController {
 	@Autowired
 	private StockRepository stockRepository;
 
+	@Autowired
+	private JobHandlerService jobService;
+
+
 	@GetMapping("/all")
 	public List<Stock> getStatus() {
 		return stockRepository.findAll();
@@ -36,6 +41,7 @@ public class DashboardController {
 
 		Stock stock = new Stock(stockRequest.getName(), stockRequest.getOperation(), stockRequest.getPrice(), stockRequest.getPercent());
 		stockRepository.save(stock);
+		jobService.trackSavedJobs();
 		return ResponseEntity.ok(new ApiResponse(true, "Stock saved for tracking"));
 	}
 }
