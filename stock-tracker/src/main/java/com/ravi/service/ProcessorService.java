@@ -59,7 +59,7 @@ public class ProcessorService {
             } else {
                 if (marketPrice.compareTo(hist.getSellOff()) >= 0) {
                     logger.info("market price greater than sell off price so BUYING it and deleting job");
-                    this.addHistory(stock, marketPrice, sqrOff, sellOff, AppConstants.BOUGHT);
+                    this.addHistory(stock, marketPrice, hist.getSquareOff(), hist.getSellOff(), AppConstants.BOUGHT);
                     this.jobSchedulerModelGenerator.deleteJob(stock);
                 }
                 //
@@ -96,7 +96,7 @@ public class ProcessorService {
             } else {
                 if (marketPrice.compareTo(hist.getSellOff()) <= 0) {
                     logger.info("market price less than sell off price so selling it and deleting job");
-                    this.addHistory(stock, marketPrice, sqrOff, sellOff, AppConstants.SOLD);
+                    this.addHistory(stock, marketPrice, hist.getSquareOff(), hist.getSellOff(), AppConstants.SOLD);
                     this.jobSchedulerModelGenerator.deleteJob(stock);
                 }
                 //
